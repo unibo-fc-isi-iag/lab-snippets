@@ -91,6 +91,9 @@ and they are configured via environment variables:
 - `OPENAI_API_KEY`: your API key (if missing, it is asked interactively)
 - `OPENAI_MODEL`: the model to use (default: `openrouter/free`, i.e. Open Router picks a random free model at each request, so defaults never go stale; set a specific model ID for reproducible runs; `openrouter/auto` picks one by content, but is paid)
 
+The runner automatically loads `.env` from the project root if present, before running a snippet.
+Existing environment variables take priority over values in `.env`; a missing `.env` is ignored.
+
 The snippets of the `rag` lecture also need an _embedding_ model, configured via:
 - `EMBEDDINGS_BASE_URL`: the API's URL (default: `http://localhost:11434/v1`, i.e. a local [Ollama](https://ollama.com) server)
 - `EMBEDDINGS_API_KEY`: the API key (default: `ollama`, which Ollama ignores)

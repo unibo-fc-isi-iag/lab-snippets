@@ -19,6 +19,7 @@ import runpy
 import sys
 from argparse import ArgumentParser
 from pathlib import Path
+from dotenv import load_dotenv
 
 SNIPPETS_ROOT = Path(__file__).parent
 PROJECT_ROOT = SNIPPETS_ROOT.parent
@@ -85,6 +86,7 @@ def run(path: Path, args: list[str]) -> None:
 
 
 def main() -> None:
+    load_dotenv(PROJECT_ROOT / ".env", override=False)
     args, snippet_args = create_arg_parser().parse_known_args()
     if snippet_args[:1] == ["--"]:
         snippet_args = snippet_args[1:]
